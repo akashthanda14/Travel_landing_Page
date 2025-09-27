@@ -117,25 +117,48 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Panel */}
-        {menuOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-md shadow-md rounded-b-lg">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+        {/* Mobile Navigation Panel - side drawer */}
+        <div className="md:hidden">
+          {/* overlay */}
+          <div
+            className={`fixed inset-0 z-40 bg-black/40 transition-opacity duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+            onClick={closeMenu}
+            aria-hidden={!menuOpen}
+          />
+
+          {/* drawer */}
+          <aside
+            className={`fixed top-0 right-0 z-50 h-full w-80 max-w-[85%] bg-white/95 backdrop-blur-md shadow-xl transform transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+            aria-hidden={!menuOpen}
+            role="dialog"
+            aria-label="Mobile menu"
+          >
+            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200">
+              <span className="font-semibold text-gray-800">Menu</span>
+              <button
+                onClick={closeMenu}
+                className="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                aria-label="Close menu"
+              >
+                <XMarkIcon className="h-6 w-6" />
+              </button>
+            </div>
+
+            <nav className="px-4 py-6 space-y-2">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   scroll={item.href.startsWith('#')}
                   onClick={closeMenu}
-                  className={`group relative block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-700 font-semibold transition-colors duration-200 focus:ring-2 focus:ring-blue-600 focus:outline-none rounded`}
+                  className="block px-3 py-2 text-gray-800 font-semibold rounded hover:bg-gray-100 transition-colors"
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-700 transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
-            </div>
-          </div>
-        )}
+            </nav>
+          </aside>
+        </div>
       </div>
     </nav>
   );
