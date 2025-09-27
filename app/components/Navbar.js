@@ -128,35 +128,78 @@ export default function Navbar() {
 
           {/* drawer */}
           <aside
-            className={`fixed top-0 right-0 z-50 h-full w-80 max-w-[85%] bg-white/95 backdrop-blur-md shadow-xl transform transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+            className={`fixed top-0 right-0 z-50 h-full w-80 max-w-[85%] bg-black/20 backdrop-blur-xl shadow-xl transform transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
             aria-hidden={!menuOpen}
             role="dialog"
             aria-label="Mobile menu"
           >
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200">
-              <span className="font-semibold text-gray-800">Menu</span>
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/20">
+              <Image
+                src="https://res.cloudinary.com/dmt4dj8ft/image/upload/v1758995641/logo_1_u4csls.png"
+                alt="Bachpan Travel Agency Logo"
+                width={120}
+                height={48}
+                priority
+                className="h-12 w-auto"
+              />
               <button
                 onClick={closeMenu}
-                className="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                className="p-2 rounded-md text-white hover:bg-white/10 focus:ring-2 focus:ring-white focus:outline-none"
                 aria-label="Close menu"
               >
                 <XMarkIcon className="h-6 w-6" />
               </button>
             </div>
 
-            <nav className="px-4 py-6 space-y-2">
+            <nav className="px-4 py-6 space-y-2 flex-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   scroll={item.href.startsWith('#')}
                   onClick={closeMenu}
-                  className="block px-3 py-2 text-gray-800 font-semibold rounded hover:bg-gray-100 transition-colors"
+                  className="block px-3 py-2 text-white font-semibold rounded hover:bg-white/10 transition-colors"
                 >
                   {item.name}
                 </Link>
               ))}
             </nav>
+
+            {/* Social icons */}
+            <div className="px-4 py-4 border-t border-white/20 flex justify-center gap-4">
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram (opens in new tab)"
+                className="p-2 rounded-full hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white inline-flex items-center"
+              >
+                <SiInstagram className="w-6 h-6 text-white" aria-hidden="true" />
+                <span className="sr-only">Instagram</span>
+              </a>
+
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook (opens in new tab)"
+                className="p-2 rounded-full hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white inline-flex items-center"
+              >
+                <SiFacebook className="w-6 h-6 text-white" aria-hidden="true" />
+                <span className="sr-only">Facebook</span>
+              </a>
+
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter (opens in new tab)"
+                className="p-2 rounded-full hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white inline-flex items-center"
+              >
+                <SiTwitter className="w-6 h-6 text-white" aria-hidden="true" />
+                <span className="sr-only">Twitter</span>
+              </a>
+            </div>
           </aside>
         </div>
       </div>

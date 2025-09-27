@@ -62,7 +62,7 @@ export default function Hero({
         {/* Mobile image (visible on small screens only) */}
         <div className="md:hidden w-full h-full">
           <Image
-            src="https://res.cloudinary.com/dmt4dj8ft/image/upload/v1758997756/IMG_4903_i7mvlm.png"
+            src="https://res.cloudinary.com/dmt4dj8ft/image/upload/v1759004152/martin-katler-Vui_cHbgStU-unsplash_gueqy9.jpg"
             alt="Serene family travel scene"
             fill
             priority
